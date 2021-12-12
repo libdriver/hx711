@@ -4,7 +4,7 @@
 
 ## LibDriver HX711
 
-[English](/README.md) | [ 简体中文](/README_CN.md)
+[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
 
 HX711 is a 24 bit A / D converter chip specially designed for high precision electronic scales, which adopts the patented technology of Haixin technology integrated circuit. Compared with other chips of the same type, the chip set is more stable.It has the advantages of high integration, fast response and strong anti-interference. It reduces the electron density. The overall cost of the scale improves the performance and reliability of the whole machine.
 
@@ -97,7 +97,7 @@ Please sent an e-mail to lishifenging@outlook.com
 
 ### License
 
-Copyright (C) LibDriver 2015-2021 All rights reserved 
+Copyright (c) 2015 - present LibDriver All rights reserved
 
 
 
