@@ -1,10 +1,12 @@
+[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
+
 <div align=center>
 <img src="/doc/image/logo.png"/>
 </div>
 
 ## LibDriver HX711
 
-[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
+[![API](https://img.shields.io/badge/api-reference-blue)](https://www.libdriver.com/docs/hx711/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
 
 HX711 采用了海芯科技集成电路专利技术，是一款专为高精度电子秤而设计的24 位A/D 转换器芯片。与同类型其它芯片相比，该芯片集成了包括稳压电源、片内时钟振荡器等其它同类型芯片所需要的外围电路，具有集成度高、响应速度快、抗干扰性强等优点。降低了电子秤的整机成本，提高了整机的性能和可靠性。
 
