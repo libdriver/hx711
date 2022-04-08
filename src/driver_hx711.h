@@ -35,8 +35,8 @@
  * </table>
  */
 
-#ifndef _DRIVER_HX711_H_
-#define _DRIVER_HX711_H_
+#ifndef DRIVER_HX711_H
+#define DRIVER_HX711_H
 
 #include <math.h>
 #include <stdint.h>
@@ -73,18 +73,18 @@ typedef enum
  */
 typedef struct hx711_handle_s
 {
-    uint8_t (*bus_init)(void);                      /**< point to a bus_init function address */
-    uint8_t (*bus_deinit)(void);                    /**< point to a bus_deinit function address */
-    uint8_t (*bus_read)(uint8_t *value);            /**< point to a bus_read function address */
-    uint8_t (*clock_init)(void);                    /**< point to a clock_init function address */
-    uint8_t (*clock_deinit)(void);                  /**< point to a clock_deinit function address */
-    uint8_t (*clock_write)(uint8_t value);          /**< point to a clock_write function address */
-    void (*delay_us)(uint32_t us);                  /**< point to a delay_us function address */
-    void (*enable_irq)(void);                       /**< point to a enable_irq function address */
-    void (*disable_irq)(void);                      /**< point to a disable_irq function address */
-    uint16_t (*debug_print)(char *fmt, ...);        /**< point to a debug_print function address */
-    uint8_t inited;                                 /**< inited flag */
-    uint8_t mode;                                   /**< chip mode */
+    uint8_t (*bus_init)(void);                              /**< point to a bus_init function address */
+    uint8_t (*bus_deinit)(void);                            /**< point to a bus_deinit function address */
+    uint8_t (*bus_read)(uint8_t *value);                    /**< point to a bus_read function address */
+    uint8_t (*clock_init)(void);                            /**< point to a clock_init function address */
+    uint8_t (*clock_deinit)(void);                          /**< point to a clock_deinit function address */
+    uint8_t (*clock_write)(uint8_t value);                  /**< point to a clock_write function address */
+    void (*delay_us)(uint32_t us);                          /**< point to a delay_us function address */
+    void (*enable_irq)(void);                               /**< point to a enable_irq function address */
+    void (*disable_irq)(void);                              /**< point to a disable_irq function address */
+    void (*debug_print)(const char *const fmt, ...);        /**< point to a debug_print function address */
+    uint8_t inited;                                         /**< inited flag */
+    uint8_t mode;                                           /**< chip mode */
 } hx711_handle_t;
 
 /**

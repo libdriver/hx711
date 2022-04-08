@@ -7,7 +7,7 @@ var group__hx711__base__driver =
       [ "clock_deinit", "structhx711__handle__s.html#a0a00d62007adf248c501de55334ac3d6", null ],
       [ "clock_init", "structhx711__handle__s.html#af7f6ca3b0c9e90b98d2a667224e202dc", null ],
       [ "clock_write", "structhx711__handle__s.html#af89263ab34163d47d7ea89dd70480858", null ],
-      [ "debug_print", "structhx711__handle__s.html#a75f9f50c23e87e9407f9ec4e34bb42f2", null ],
+      [ "debug_print", "structhx711__handle__s.html#a769d5b3a6c14790a0e126e8fe70b384b", null ],
       [ "delay_us", "structhx711__handle__s.html#a97ffc4fce945527bd6ab25a3596caef7", null ],
       [ "disable_irq", "structhx711__handle__s.html#aac09376076eae94d89ca85ff63018eee", null ],
       [ "enable_irq", "structhx711__handle__s.html#a06c0ed41fc67fd360798b30e8ce1d480", null ],

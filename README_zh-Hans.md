@@ -1,4 +1,4 @@
-[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
+[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md) | [日本語](/README_ja.md) | [Deutsch](/README_de.md) | [한국어](/README_ko.md)
 
 <div align=center>
 <img src="/doc/image/logo.png"/>
@@ -6,11 +6,11 @@
 
 ## LibDriver HX711
 
-[![API](https://img.shields.io/badge/api-reference-blue)](https://www.libdriver.com/docs/hx711/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
+[![MISRA](https://img.shields.io/badge/misra-compliant-brightgreen.svg)](/misra/README.md) [![API](https://img.shields.io/badge/api-reference-blue.svg)](https://www.libdriver.com/docs/hx711/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
 
 HX711 采用了海芯科技集成电路专利技术，是一款专为高精度电子秤而设计的24 位A/D 转换器芯片。与同类型其它芯片相比，该芯片集成了包括稳压电源、片内时钟振荡器等其它同类型芯片所需要的外围电路，具有集成度高、响应速度快、抗干扰性强等优点。降低了电子秤的整机成本，提高了整机的性能和可靠性。
 
-LibDriver HX711是LibDriver推出的HX711全功能驱动，该驱动提供差分AD读取功能。
+LibDriver HX711是LibDriver推出的HX711全功能驱动，该驱动提供差分AD读取功能并且它符合MISRA标准。
 
 ### 目录
 

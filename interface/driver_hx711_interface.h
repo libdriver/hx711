@@ -35,8 +35,8 @@
  * </table>
  */
 
-#ifndef _DRIVER_HX711_INTERFACE_H_
-#define _DRIVER_HX711_INTERFACE_H_
+#ifndef DRIVER_HX711_INTERFACE_H
+#define DRIVER_HX711_INTERFACE_H
 
 #include "driver_hx711.h"
 
@@ -129,10 +129,9 @@ void hx711_interface_disable_irq(void);
 /**
  * @brief     interface print format data
  * @param[in] fmt is the format data
- * @return    length of the send data
  * @note      none
  */
-uint16_t hx711_interface_debug_print(char *fmt, ...);
+void hx711_interface_debug_print(const char *const fmt, ...);
 
 /**
  * @}

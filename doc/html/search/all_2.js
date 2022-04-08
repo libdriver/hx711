@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['debug_5fprint_8',['debug_print',['../structhx711__handle__s.html#a75f9f50c23e87e9407f9ec4e34bb42f2',1,'hx711_handle_s']]],
+  ['debug_5fprint_8',['debug_print',['../structhx711__handle__s.html#a769d5b3a6c14790a0e126e8fe70b384b',1,'hx711_handle_s']]],
   ['delay_5fus_9',['delay_us',['../structhx711__handle__s.html#a97ffc4fce945527bd6ab25a3596caef7',1,'hx711_handle_s']]],
   ['disable_5firq_10',['disable_irq',['../structhx711__handle__s.html#aac09376076eae94d89ca85ff63018eee',1,'hx711_handle_s']]],
   ['driver_5fhx711_2ec_11',['driver_hx711.c',['../driver__hx711_8c.html',1,'']]],

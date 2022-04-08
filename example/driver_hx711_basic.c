@@ -48,7 +48,7 @@ static hx711_handle_t gs_handle;        /**< hx711 handle */
  */
 uint8_t hx711_basic_init(void)
 {
-    volatile uint8_t res;
+    uint8_t res;
    
     /* link interface function */    
     DRIVER_HX711_LINK_INIT(&gs_handle, hx711_handle_t);
@@ -65,7 +65,7 @@ uint8_t hx711_basic_init(void)
    
     /* hx711 init */
     res = hx711_init(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         hx711_interface_debug_print("hx711: init failed.\n");
         
@@ -74,10 +74,10 @@ uint8_t hx711_basic_init(void)
     
     /* set default mode */
     res = hx711_set_mode(&gs_handle, HX711_BASIC_DEFAULT_MODE);
-    if (res)
+    if (res != 0)
     {
         hx711_interface_debug_print("hx711: set mode failed.\n");
-        hx711_deinit(&gs_handle);
+        (void)hx711_deinit(&gs_handle);
         
         return 1;
     }
@@ -97,7 +97,7 @@ uint8_t hx711_basic_init(void)
 uint8_t hx711_basic_read(int32_t *raw_voltage, double *voltage_v)
 {
     /* read data */
-    if (hx711_read(&gs_handle, raw_voltage, voltage_v))
+    if (hx711_read(&gs_handle, raw_voltage, voltage_v) != 0)
     {
         return 1;
     }
@@ -117,7 +117,7 @@ uint8_t hx711_basic_read(int32_t *raw_voltage, double *voltage_v)
 uint8_t hx711_basic_deinit(void)
 {
     /* deinit hx711 */
-    if (hx711_deinit(&gs_handle))
+    if (hx711_deinit(&gs_handle) != 0)
     {
         return 1;
     }

@@ -112,7 +112,7 @@ uint8_t hx711(uint8_t argc, char **argv)
             if (strcmp("reg", argv[2]) == 0)
             {
                 /* run register test */
-                if (hx711_register_test())
+                if (hx711_register_test() != 0)
                 {
                     return 1;
                 }
@@ -142,7 +142,7 @@ uint8_t hx711(uint8_t argc, char **argv)
             if (strcmp("read", argv[2]) == 0)
             {
                 /* run read test */
-                if (hx711_read_test(atoi(argv[3])))
+                if (hx711_read_test(atoi(argv[3])) != 0)
                 {
                     return 1;
                 }
@@ -170,26 +170,26 @@ uint8_t hx711(uint8_t argc, char **argv)
                 volatile double voltage_v;
                 
                 res = hx711_basic_init();
-                if (res)
+                if (res != 0)
                 {
                     return 1;
                 }
                 times = atoi(argv[3]);
-                for (i=0; i<times; i++)
+                for (i = 0; i < times; i++)
                 {
                     res = hx711_basic_read((int32_t *)&raw_voltage, (double *)&voltage_v);
-                    if (res)
+                    if (res != 0)
                     {
-                        hx711_basic_deinit();
+                        (void)hx711_basic_deinit();
                         
                         return 1;
                     }
                     hx711_interface_delay_us(1000 * 1000);
-                    hx711_interface_debug_print("hx711: %d/%d.\n", (uint32_t)(i+1), (uint32_t)times);
+                    hx711_interface_debug_print("hx711: %d/%d.\n", (uint32_t)(i + 1), (uint32_t)times);
                     hx711_interface_debug_print("hx711: raw voltage is %d.\n", raw_voltage);
                     hx711_interface_debug_print("hx711: voltage is %fmV.\n", voltage_v); 
                 }
-                hx711_basic_deinit();
+                (void)hx711_basic_deinit();
                 
                 return 0;
             }
