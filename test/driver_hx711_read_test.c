@@ -49,10 +49,10 @@ static hx711_handle_t gs_handle;        /**< hx711 handle */
  */
 uint8_t hx711_read_test(uint32_t times)
 {
-    volatile uint8_t res;
-    volatile uint32_t i;
-    volatile int32_t raw;
-    volatile double voltage_v;
+    uint8_t res;
+    uint32_t i;
+    int32_t raw;
+    double voltage_v;
     hx711_info_t info;
     
     /* link interface function */
@@ -70,7 +70,7 @@ uint8_t hx711_read_test(uint32_t times)
     
     /* get hx711 info */
     res = hx711_info(&info);
-    if (res)
+    if (res != 0)
     {
         hx711_interface_debug_print("hx711: get info failed.\n");
         
@@ -93,7 +93,7 @@ uint8_t hx711_read_test(uint32_t times)
     /* start read test */
     hx711_interface_debug_print("hx711: start read test.\n");
     res = hx711_init(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         hx711_interface_debug_print("hx711: init failed.\n");
        
@@ -103,78 +103,78 @@ uint8_t hx711_read_test(uint32_t times)
     /* start channel A 128 gain mode test */
     hx711_interface_debug_print("hx711: channel A 128 gain mode test.\n");
     res = hx711_set_mode(&gs_handle, HX711_MODE_CHANNEL_A_GAIN_128);
-    if (res)
+    if (res != 0)
     {
         hx711_interface_debug_print("hx711: set mode failed.\n");
-        hx711_deinit(&gs_handle);
+        (void)hx711_deinit(&gs_handle);
         
         return 1;
     }
-    for (i=0; i<times; i++)
+    for (i = 0; i < times; i++)
     {
         res = hx711_read(&gs_handle, (int32_t *)&raw, (double *)&voltage_v);
-        if (res)
+        if (res != 0)
         {
             hx711_interface_debug_print("hx711: read failed.\n");
-            hx711_deinit(&gs_handle);
+            (void)hx711_deinit(&gs_handle);
             
             return 1;
         }
         hx711_interface_debug_print("hx711: voltage is %f mV.\n", voltage_v*1000.0);
-        hx711_interface_delay_us(1000*2000);
+        hx711_interface_delay_us(1000L * 2000L);
     }
     
     /* start channel B 32 gain mode test */
     hx711_interface_debug_print("hx711: channel B 32 gain mode test.\n");
     res = hx711_set_mode(&gs_handle, HX711_MODE_CHANNEL_B_GAIN_32);
-    if (res)
+    if (res != 0)
     {
         hx711_interface_debug_print("hx711: set mode failed.\n");
-        hx711_deinit(&gs_handle);
+        (void)hx711_deinit(&gs_handle);
         
         return 1;
     }    
-    for (i=0; i<times; i++)
+    for (i = 0; i < times; i++)
     {
         res = hx711_read(&gs_handle, (int32_t *)&raw, (double *)&voltage_v);
-        if (res)
+        if (res != 0)
         {
             hx711_interface_debug_print("hx711: read failed.\n");
-            hx711_deinit(&gs_handle);
+            (void)hx711_deinit(&gs_handle);
             
             return 1;
         }
         hx711_interface_debug_print("hx711: voltage is %f mV.\n", voltage_v*1000.0);
-        hx711_interface_delay_us(1000*2000);
+        hx711_interface_delay_us(1000L * 2000L);
     }
     
     /* start channel A 64 gain mode test */
     hx711_interface_debug_print("hx711: channel A 64 gain mode test.\n");
     res = hx711_set_mode(&gs_handle, HX711_MODE_CHANNEL_A_GAIN_64);
-    if (res)
+    if (res != 0)
     {
         hx711_interface_debug_print("hx711: set mode failed.\n");
-        hx711_deinit(&gs_handle);
+        (void)hx711_deinit(&gs_handle);
         
         return 1;
     }
-    for (i=0; i<times; i++)
+    for (i = 0; i < times; i++)
     {
         res = hx711_read(&gs_handle, (int32_t *)&raw, (double *)&voltage_v);
-        if (res)
+        if (res != 0)
         {
             hx711_interface_debug_print("hx711: read failed.\n");
-            hx711_deinit(&gs_handle);
+            (void)hx711_deinit(&gs_handle);
             
             return 1;
         }
         hx711_interface_debug_print("hx711: voltage is %f mV.\n", voltage_v*1000.0);
-        hx711_interface_delay_us(1000*2000);
+        hx711_interface_delay_us(1000L * 2000L);
     }
     
     /* finish read test */
     hx711_interface_debug_print("hx711: finish read test.\n");
-    hx711_deinit(&gs_handle);
+    (void)hx711_deinit(&gs_handle);
     
     return 0;
 }

@@ -59,46 +59,49 @@
  *             - 1 read failed
  * @note       none
  */
-static uint8_t _hx711_read_ad(hx711_handle_t *handle, uint8_t len, int32_t *value)
+static uint8_t a_hx711_read_ad(hx711_handle_t *handle, uint8_t len, int32_t *value)
 {
-    volatile uint32_t val = 0;
-    volatile uint32_t cnt = 0;
-    volatile uint8_t i;
-    volatile uint8_t v;
+    uint32_t val = 0;
+    uint32_t cnt = 0;
+    uint8_t i;
+    uint8_t v;
     
-    if (handle->clock_write(0))                                           /* write clock 0 */
+    if (handle->clock_write(0) != 0)                                      /* write clock 0 */
     {
         handle->debug_print("hx711: clock write 0 failed.\n");            /* clock write failed */
         
         return 1;                                                         /* return error */
     }
     
-    wait:                                                                 /* wait loop */
-    
-    handle->delay_us(100);                                                /* wait 100 us */
-    if (handle->bus_read((uint8_t *)&v))                                  /* bus read failed */
+    while (1)                                                             /* loop */
     {
-        handle->debug_print("hx711: bus read failed.\n");                 /* bus read failed */
-        
-        return 1;                                                         /* return error */
-    }
-    cnt++;                                                                /* increase timeout cnt */
-    if (v == 1)                                                           /* if v==1 */
-    {
-        if (cnt >= 50000)                                                 /* check timeout */
+        handle->delay_us(100);                                            /* wait 100 us */
+        if (handle->bus_read((uint8_t *)&v) != 0)                         /* bus read failed */
         {
-            handle->debug_print("hx711: bus no response.\n");             /* bus no response */
+            handle->debug_print("hx711: bus read failed.\n");             /* bus read failed */
             
             return 1;                                                     /* return error */
         }
-        
-        goto wait;                                                        /* read again */
+        cnt++;                                                            /* increase timeout cnt */
+        if (v == 1)                                                       /* if v==1 */
+        {
+            if (cnt >= 50000)                                             /* check timeout */
+            {
+                handle->debug_print("hx711: bus no response.\n");         /* bus no response */
+                
+                return 1;                                                 /* return error */
+            }
+        }
+        else
+        {
+            break;                                                        /* break */
+        }
     }
     handle->disable_irq();                                                /* disable interrupt */
     handle->delay_us(1);                                                  /* wait 1 us */
     for (i = 0; i < 24; i++)                                              /* read 24 bits */
     {
-        if (handle->clock_write(1))                                       /* write clock 1 */
+        if (handle->clock_write(1) != 0)                                  /* write clock 1 */
         {
             handle->enable_irq();                                         /* enable interrupt */
             handle->debug_print("hx711: clock write 1 failed.\n");        /* clock write failed */
@@ -107,29 +110,29 @@ static uint8_t _hx711_read_ad(hx711_handle_t *handle, uint8_t len, int32_t *valu
         }
         val = val << 1;                                                   /* left shift 1 */
         handle->delay_us(1);                                              /* wait 1 us */
-        if (handle->clock_write(0))                                       /* write clock 0 */
+        if (handle->clock_write(0) != 0)                                  /* write clock 0 */
         {
             handle->enable_irq();                                         /* enable interrupt */
             handle->debug_print("hx711: clock write 0 failed.\n");        /* clock write failed */
             
             return 1;                                                     /* return error */
         }
-        if (handle->bus_read((uint8_t *)&v))                              /* read 1 bit */
+        if (handle->bus_read((uint8_t *)&v) != 0)                         /* read 1 bit */
         {
             handle->enable_irq();                                         /* enable interrupt */
             handle->debug_print("hx711: bus read failed.\n");             /* bus read failed */
             
             return 1;                                                     /* return error */
         }
-        if (v)
+        if (v != 0)                                                       /* check v */
         {
             val++;                                                        /* value++ */
         }
         handle->delay_us(1);                                              /* wait 1 us */
     }
-    while (len)                                                           /* send pulses */
+    while (len != 0)                                                      /* send pulses */
     {
-        if (handle->clock_write(1))                                       /* write clock 1 */
+        if (handle->clock_write(1) != 0)                                  /* write clock 1 */
         {
             handle->enable_irq();                                         /* enable interrupt */
             handle->debug_print("hx711: clock write 1 failed.\n");        /* clock write failed */
@@ -137,7 +140,7 @@ static uint8_t _hx711_read_ad(hx711_handle_t *handle, uint8_t len, int32_t *valu
             return 1;                                                     /* return error */
         }
         handle->delay_us(1);                                              /* wait 1 us */
-        if (handle->clock_write(0))                                       /* write clock 0 */
+        if (handle->clock_write(0) != 0)                                  /* write clock 0 */
         {
             handle->enable_irq();                                         /* enable interrupt */
             handle->debug_print("hx711: clock write 0 failed.\n");        /* clock write failed */
@@ -148,13 +151,20 @@ static uint8_t _hx711_read_ad(hx711_handle_t *handle, uint8_t len, int32_t *valu
         len--;                                                            /* length-- */
     }
     handle->enable_irq();                                                 /* enable interrupt */
-    if (val & 0x800000)
+    if ((val & 0x800000) != 0)                                            /* check negtive bit */
     {
-        *value = -(~(0xFF000000|val)+1);                                  /* set negtive value */
+        union 
+        {
+            int32_t i_f;
+            uint32_t u_f;
+        } u;
+        val = 0xFF000000U | val;                                          /* set negtive value */
+        u.u_f = val;                                                      /* set negtive value */
+        *value = (int32_t)u.i_f;                                          /* set negtive value */
     }
     else
     {
-        *value = val;                                                     /* set positive value */
+        *value = (int32_t)val;                                            /* set positive value */
     }
     
     return 0;                                                             /* success return 0 */
@@ -235,16 +245,16 @@ uint8_t hx711_init(hx711_handle_t *handle)
         return 3;                                                    /* return error */
     }
     
-    if (handle->clock_init())                                        /* initialize clock */
+    if (handle->clock_init() != 0)                                   /* initialize clock */
     {
         handle->debug_print("hx711: clock init failed.\n");          /* clock init failed */
         
         return 1;                                                    /* return error */
     }
-    if (handle->bus_init())                                          /* initialize bus */
+    if (handle->bus_init() != 0)                                     /* initialize bus */
     {
         handle->debug_print("hx711: bus init failed.\n");            /* bus init failed */
-        handle->clock_deinit();                                      /* deinit clock */
+        (void)handle->clock_deinit();                                /* deinit clock */
         
         return 1;                                                    /* return error */
     }
@@ -275,13 +285,13 @@ uint8_t hx711_deinit(hx711_handle_t *handle)
         return 3;                                                    /* return error */
     }
     
-    if (handle->bus_deinit())                                        /* deinit bus */
+    if (handle->bus_deinit() != 0)                                   /* deinit bus */
     {
         handle->debug_print("hx711: bus deinit failed.\n");          /* bus deinit failed */
         
         return 1;                                                    /* return error */
     }   
-    if (handle->clock_deinit())                                      /* deinit clock */
+    if (handle->clock_deinit() != 0)                                 /* deinit clock */
     {
         handle->debug_print("hx711: clock deinit failed.\n");        /* clock deinit failed */
 
@@ -305,26 +315,26 @@ uint8_t hx711_deinit(hx711_handle_t *handle)
  */
 uint8_t hx711_set_mode(hx711_handle_t *handle, hx711_mode_t mode)
 {
-    volatile int32_t value; 
+    int32_t value; 
     
-    if (handle == NULL)                                                 /* check handle */
+    if (handle == NULL)                                                       /* check handle */
     {
-        return 2;                                                       /* return error */
+        return 2;                                                             /* return error */
     }
-    if (handle->inited != 1)                                            /* check handle initialization */
+    if (handle->inited != 1)                                                  /* check handle initialization */
     {
-        return 3;                                                       /* return error */
+        return 3;                                                             /* return error */
     }
     
-    handle->mode = mode;                                                /* set mode */
-    if (_hx711_read_ad(handle, handle->mode, (int32_t *)&value))        /* make mode valid */
+    handle->mode = (uint8_t)mode;                                             /* set mode */
+    if (a_hx711_read_ad(handle, handle->mode, (int32_t *)&value) != 0)        /* make mode valid */
     {
-        handle->debug_print("hx711: read ad failed.\n");                /* read ad failed */
+        handle->debug_print("hx711: read ad failed.\n");                      /* read ad failed */
         
-        return 1;                                                       /* return error */
+        return 1;                                                             /* return error */
     }
     
-    return 0;                                                           /* success return 0 */
+    return 0;                                                                 /* success return 0 */
 }
 
 /**
@@ -378,23 +388,29 @@ uint8_t hx711_read(hx711_handle_t *handle, int32_t *raw, double *voltage_v)
         return 3;                                                            /* return error */
     }
     
-    if (_hx711_read_ad(handle, handle->mode, (int32_t *)raw))                /* read ad */
+    if (a_hx711_read_ad(handle, handle->mode, (int32_t *)raw) != 0)          /* read ad */
     {
         handle->debug_print("hx711: read voltage failed.\n");                /* read voltage failed */
         
         return 1;                                                            /* return error */
     }
-    if (handle->mode == HX711_MODE_CHANNEL_A_GAIN_128)                       /* if gain 128 */
+    if (handle->mode == (uint8_t)HX711_MODE_CHANNEL_A_GAIN_128)              /* if gain 128 */
     {
-        *voltage_v = (double)(*raw) * (20.0 / (pow(2, 24))) / 1000.0;        /* calculate gain 128 */
+        *voltage_v = (double)(*raw) * (20.0 / (pow(2.0, 24.0))) / 1000.0;    /* calculate gain 128 */
+        
+        return 0;                                                            /* success return 0 */
     }
-    else if (handle->mode == HX711_MODE_CHANNEL_B_GAIN_32)                   /* if gain 32 */
+    else if (handle->mode == (uint8_t)HX711_MODE_CHANNEL_B_GAIN_32)          /* if gain 32 */
     {
-        *voltage_v = (double)(*raw) * (80.0 / (pow(2, 24))) / 1000.0;        /* calculate gain 32 */
+        *voltage_v = (double)(*raw) * (80.0 / (pow(2.0, 24.0))) / 1000.0;    /* calculate gain 32 */
+        
+        return 0;                                                            /* success return 0 */
     }
-    else if (handle->mode == HX711_MODE_CHANNEL_A_GAIN_64)                   /* if gain 64 */
+    else if (handle->mode == (uint8_t)HX711_MODE_CHANNEL_A_GAIN_64)          /* if gain 64 */
     {
-        *voltage_v = (double)(*raw) * (40.0 / (pow(2, 24))) / 1000.0;        /* calculate gain 64 */
+        *voltage_v = (double)(*raw) * (40.0 / (pow(2.0, 24.0))) / 1000.0;    /* calculate gain 64 */
+        
+        return 0;                                                            /* success return 0 */
     }
     else
     {
@@ -402,8 +418,6 @@ uint8_t hx711_read(hx711_handle_t *handle, int32_t *raw, double *voltage_v)
         
         return 4;                                                            /* return error */
     }
-    
-    return 0;                                                                /* success return 0 */
 }
 
 /**

@@ -48,7 +48,7 @@ static hx711_handle_t gs_handle;        /**< hx711 handle */
  */
 uint8_t hx711_register_test(void)
 {
-    volatile uint8_t res;
+    uint8_t res;
     hx711_mode_t mode;
     hx711_info_t info;
     
@@ -67,7 +67,7 @@ uint8_t hx711_register_test(void)
     
     /* get chip information */
     res = hx711_info(&info);
-    if (res)
+    if (res != 0)
     {
         hx711_interface_debug_print("hx711: get info failed.\n");
         
@@ -92,7 +92,7 @@ uint8_t hx711_register_test(void)
     
     /* hx711 init */
     res = hx711_init(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         hx711_interface_debug_print("hx711: init failed.\n");
         
@@ -104,19 +104,19 @@ uint8_t hx711_register_test(void)
     
     /* set CHANNEL_A_GAIN_128 */
     res = hx711_set_mode(&gs_handle, HX711_MODE_CHANNEL_A_GAIN_128);
-    if (res)
+    if (res != 0)
     {
         hx711_interface_debug_print("hx711: set mode failed.\n");
-        hx711_deinit(&gs_handle);
+        (void)hx711_deinit(&gs_handle);
         
         return 1;
     }        
     hx711_interface_debug_print("hx711: set channel a gain 128 mode.\n");
     res = hx711_get_mode(&gs_handle, &mode);
-    if (res)
+    if (res != 0)
     {
         hx711_interface_debug_print("hx711: get mode failed.\n");
-        hx711_deinit(&gs_handle);
+        (void)hx711_deinit(&gs_handle);
         
         return 1;
     }
@@ -124,19 +124,19 @@ uint8_t hx711_register_test(void)
     
     /* set CHANNEL_B_GAIN_32 */
     res = hx711_set_mode(&gs_handle, HX711_MODE_CHANNEL_B_GAIN_32);
-    if (res)
+    if (res != 0)
     {
         hx711_interface_debug_print("hx711: set mode failed.\n");
-        hx711_deinit(&gs_handle);
+        (void)hx711_deinit(&gs_handle);
         
         return 1;
     }
     hx711_interface_debug_print("hx711: set channel b gain 32 mode.\n");
     res = hx711_get_mode(&gs_handle, &mode);
-    if (res)
+    if (res != 0)
     {
         hx711_interface_debug_print("hx711: get mode failed.\n");
-        hx711_deinit(&gs_handle);
+        (void)hx711_deinit(&gs_handle);
         
         return 1;
     }
@@ -144,19 +144,19 @@ uint8_t hx711_register_test(void)
     
     /* set CHANNEL_A_GAIN_64 */
     res = hx711_set_mode(&gs_handle, HX711_MODE_CHANNEL_A_GAIN_64);
-    if (res)
+    if (res != 0)
     {
         hx711_interface_debug_print("hx711: set mode failed.\n");
-        hx711_deinit(&gs_handle);
+        (void)hx711_deinit(&gs_handle);
         
         return 1;
     }
     hx711_interface_debug_print("hx711: set channel a gain 64 mode.\n");
     res = hx711_get_mode(&gs_handle, &mode);
-    if (res)
+    if (res != 0)
     {
         hx711_interface_debug_print("hx711: get mode failed.\n");
-        hx711_deinit(&gs_handle);
+        (void)hx711_deinit(&gs_handle);
         
         return 1;
     }
@@ -164,7 +164,7 @@ uint8_t hx711_register_test(void)
     
     /* finish register test */
     hx711_interface_debug_print("hx711: finish register test.\n");
-    hx711_deinit(&gs_handle);
+    (void)hx711_deinit(&gs_handle);
     
     return 0;
 }

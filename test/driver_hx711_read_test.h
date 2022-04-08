@@ -35,8 +35,8 @@
  * </table>
  */
 
-#ifndef _DRIVER_HX711_READ_TEST_H_
-#define _DRIVER_HX711_READ_TEST_H_
+#ifndef DRIVER_HX711_READ_TEST_H
+#define DRIVER_HX711_READ_TEST_H
 
 #include "driver_hx711_interface.h"
 

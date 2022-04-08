@@ -142,10 +142,9 @@ void hx711_interface_disable_irq(void)
 /**
  * @brief     interface print format data
  * @param[in] fmt is the format data
- * @return    length of the send data
  * @note      none
  */
-uint16_t hx711_interface_debug_print(char *fmt, ...)
+void hx711_interface_debug_print(const char *const fmt, ...)
 {
-    return 0;
+    
 }

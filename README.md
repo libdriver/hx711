@@ -1,4 +1,4 @@
-[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
+[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md) | [日本語](/README_ja.md) | [Deutsch](/README_de.md) | [한국어](/README_ko.md)
 
 <div align=center>
 <img src="/doc/image/logo.png"/>
@@ -6,11 +6,11 @@
 
 ## LibDriver HX711
 
-[![API](https://img.shields.io/badge/api-reference-blue)](https://www.libdriver.com/docs/hx711/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
+[![MISRA](https://img.shields.io/badge/misra-compliant-brightgreen.svg)](/misra/README.md) [![API](https://img.shields.io/badge/api-reference-blue.svg)](https://www.libdriver.com/docs/hx711/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
 
 HX711 is a 24 bit A / D converter chip specially designed for high precision electronic scales, which adopts the patented technology of Haixin technology integrated circuit. Compared with other chips of the same type, the chip set is more stable.It has the advantages of high integration, fast response and strong anti-interference. It reduces the electron density. The overall cost of the scale improves the performance and reliability of the whole machine.
 
-LibDriver HX711 is a full function driver of HX711 launched by LibDiver.It provides differential ad reading function.
+LibDriver HX711 is a full function driver of HX711 launched by LibDiver.It provides differential ad reading function.LibDriver is MISRA compliant.
 
 ### Table of Contents
 
