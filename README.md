@@ -56,7 +56,7 @@ int32_t raw_voltage;
 double voltage_v;
 
 res = hx711_basic_init();
-if (res)
+if (res != 0)
 {
     return 1;
 }
@@ -66,13 +66,13 @@ if (res)
 for (i = 0; i < 3; i++)
 {
     res = hx711_basic_read((int32_t *)&raw_voltage, (double *)&voltage_v);
-    if (res)
+    if (res != 0)
     {
-        hx711_basic_deinit();
+        (void)hx711_basic_deinit();
 
         return 1;
     }
-    delay_ms(1000);
+    hx711_interface_delay_ms(1000);
     hx711_interface_debug_print("hx711: raw voltage is %d.\n", raw_voltage);
     hx711_interface_debug_print("hx711: voltage is %fmV.\n", voltage_v); 
 
@@ -82,7 +82,7 @@ for (i = 0; i < 3; i++)
 
 ...
 
-hx711_basic_deinit();
+(void)hx711_basic_deinit();
 
 return 0;
 ```
