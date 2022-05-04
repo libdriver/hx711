@@ -26,15 +26,15 @@ LibDriver HX711 ist ein voll funktionsfähiger Treiber von HX711, der von LibDiv
 
 /src enthält LibDriver HX711-Quelldateien.
 
-/interface enthält die plattformunabhängige Vorlage LibDriver HX711 gpio。
+/interface enthält die plattformunabhängige Vorlage LibDriver HX711 gpio.
 
-/test enthält den Testcode des LibDriver HX711-Treibers und dieser Code kann die erforderliche Funktion des Chips einfach testen。
+/test enthält den Testcode des LibDriver HX711-Treibers und dieser Code kann die erforderliche Funktion des Chips einfach testen.
 
 /example enthält LibDriver HX711-Beispielcode.
 
 /doc enthält das LibDriver HX711-Offlinedokument.
 
-/Datenblatt enthält HX711-Datenblatt。
+/Datenblatt enthält HX711-Datenblatt.
 
 /project enthält den allgemeinen Beispielcode für Linux- und MCU-Entwicklungsboards. Alle Projekte verwenden das Shell-Skript, um den Treiber zu debuggen, und die detaillierten Anweisungen finden Sie in der README.md jedes Projekts.
 
