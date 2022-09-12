@@ -50,6 +50,8 @@ LibDriver HX711은 LibDiver에서 출시한 HX711의 전체 기능 드라이버�
 #### example basic
 
 ```C
+#include "driver_hx711_basic.h"
+
 uint8_t res;
 uint8_t i;
 int32_t raw_voltage;

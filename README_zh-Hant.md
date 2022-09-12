@@ -50,6 +50,8 @@ LibDriver HX711是LibDriver推出的HX711全功能驅動，該驅動提供差分
 #### example basic
 
 ```C
+#include "driver_hx711_basic.h"
+
 uint8_t res;
 uint8_t i;
 int32_t raw_voltage;
