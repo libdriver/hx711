@@ -49,6 +49,8 @@ Fügen Sie /src, /interface und /example zu Ihrem Projekt hinzu.
 #### example basic
 
 ```C
+#include "driver_hx711_basic.h"
+
 uint8_t res;
 uint8_t i;
 int32_t raw_voltage;

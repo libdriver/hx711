@@ -27,15 +27,15 @@ LibDriver HX711 is a full function driver of HX711 launched by LibDiver.It provi
 
 /src includes LibDriver HX711 source files.
 
-/interface includes LibDriver HX711 gpio platform independent template。
+/interface includes LibDriver HX711 gpio platform independent template.
 
-/test includes LibDriver HX711driver test code and this code can test the chip necessary function simply。
+/test includes LibDriver HX711driver test code and this code can test the chip necessary function simply.
 
 /example includes LibDriver HX711 sample code.
 
 /doc includes LibDriver HX711 offline document.
 
-/datasheet includes HX711 datasheet。
+/datasheet includes HX711 datasheet.
 
 /project includes the common Linux and MCU development board sample code. All projects use the shell script to debug the driver and the detail instruction can be found in each project's README.md.
 
@@ -50,6 +50,8 @@ Add /src, /interface and /example to your project.
 #### example basic
 
 ```C
+#include "driver_hx711_basic.h"
+
 uint8_t res;
 uint8_t i;
 int32_t raw_voltage;

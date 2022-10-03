@@ -50,6 +50,8 @@ LibDriver HX711は、LibDiverによって起動されたHX711の全機能ドラ�
 #### example basic
 
 ```C
+#include "driver_hx711_basic.h"
+
 uint8_t res;
 uint8_t i;
 int32_t raw_voltage;

@@ -1,6 +1,6 @@
-### 1. chip
+### 1. Chip
 
-#### 1.1 chip info
+#### 1.1 Chip Info
 
 chip name : STM32F407ZGT6.
 
@@ -10,23 +10,23 @@ uart pin: TX/RX PA9/PA10.
 
 gpio pin: DT/SCK PA8/PA7.
 
-### 2. shell
+### 2. Shell
 
-#### 2.1 shell parameter
+#### 2.1 Shell Parameter
 
-baud rate: 115200
+baud rate: 115200.
 
-data bits : 8
+data bits : 8.
 
-stop bits: 1
+stop bits: 1.
 
-parity: none
+parity: none.
 
-flow control: none
+flow control: none.
 
-### 3. hx711
+### 3. HX711
 
-#### 3.1 command Instruction
+#### 3.1 Command Instruction
 
 ​          hx711 is a basic command which can test all hx711 driver function:
 
@@ -44,7 +44,7 @@ flow control: none
 
 ​           -c read <times>        run hx711 read function. times means read times.
 
-#### 3.2 command example
+#### 3.2 Command Example
 
 ```shell
 hx711 -i
