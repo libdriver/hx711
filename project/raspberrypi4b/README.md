@@ -1,10 +1,10 @@
-### 1. Chip
+### 1. Board
 
-#### 1.1 Chip Info
+#### 1.1 Board Info
 
-chip name : Raspberry Pi 4B.
+Chip Name: Raspberry Pi 4B.
 
-gpio pin: SCK/DT GPIO27/GPIO17.
+GPIO Pin: SCK/DT GPIO27/GPIO17.
 
 ### 2. Install
 
@@ -74,21 +74,41 @@ find_package(hx711 REQUIRED)
 
 #### 3.1 Command Instruction
 
-​          hx711 is a basic command which can test all hx711 driver function:
+1. Show hx711 help. 
 
-​           -h        show hx711 help. 
+   ```shell
+   hx711 (-i | --information)
+   ```
 
-​           -i         show hx711 chip and driver information.
+2. Show hx711 chip and driver information.
 
-​           -p        show hx711 pin connections of the current board.
+   ```shell
+   hx711 (-h | --help)
+   ```
 
-​           -t (reg | read <times>)
+3. Show hx711 pin connections of the current board.
 
-​           -t reg        run hx711 register test.
+   ```shell
+   hx711 (-p | --port)
+   ```
 
-​           -t read <times>        run hx711 read times. times means test times. 
+4. Run hx711 register test.
 
-​           -c read <times>        run hx711 read function. times means read times.
+   ```shell
+   hx711 (-t reg | --test=reg)
+   ```
+
+5. Run hx711 read times, times means test times. 
+
+   ```shell
+   hx711 (-t read | --test=read) [--times=<num>]
+   ```
+
+6. Run hx711 read function, times means read times.
+
+   ```shell
+   hx711 (-e read | --example=read) [--times=<num>]
+   ```
 
 #### 3.2 Command Example
 
@@ -114,7 +134,7 @@ hx711: DT pin connected to GPIOA17(BCM).
 ```
 
 ```shell
-./hx711 -t read 3
+./hx711 -t read --times=3
 
 hx711: chip is Aviaic HX711.
 hx711: manufacturer is Aviaic.
@@ -127,18 +147,18 @@ hx711: max temperature is 85.0C.
 hx711: min temperature is -40.0C.
 hx711: start read test.
 hx711: channel A 128 gain mode test.
-hx711: voltage is 0.135182 mV.
-hx711: voltage is 0.135254 mV.
-hx711: voltage is 0.135167 mV.
+hx711: voltage is 2.304686mV.
+hx711: voltage is 2.343749mV.
+hx711: voltage is 2.294921mV.
 hx711: channel B 32 gain mode test.
-hx711: voltage is 0.030808 mV.
-hx711: voltage is -0.012517 mV.
-hx711: voltage is 0.008421 mV.
+hx711: voltage is 9.355464mV.
+hx711: voltage is 9.453120mV.
+hx711: voltage is 9.199214mV.
 hx711: channel A 64 gain mode test.
-hx711: voltage is 0.137765 mV.
-hx711: voltage is 0.137773 mV.
-hx711: voltage is 0.137732 mV.
-hx711: finish read test.
+hx711: voltage is 4.746091mV.
+hx711: voltage is 4.609373mV.
+hx711: voltage is 4.814451mV.
+hx711: finish read test
 ```
 
 ```shell
@@ -165,33 +185,36 @@ hx711: finish register test.
 ```
 
 ```shell
-./hx711 -c read 3
+./hx711 -e read --times=3
 
 hx711: 1/3.
-hx711: raw voltage is 113396.
-hx711: voltage is 0.000135mV.
+hx711: raw voltage is 120333.
+hx711: voltage is 0.000143V.
 hx711: 2/3.
-hx711: raw voltage is 113382.
-hx711: voltage is 0.000135mV.
+hx711: raw voltage is 120354.
+hx711: voltage is 0.000143V.
 hx711: 3/3.
-hx711: raw voltage is 113389.
-hx711: voltage is 0.000135mV.
+hx711: raw voltage is 120334.
+hx711: voltage is 0.000143V.
 ```
 
 ```shell
 ./hx711 -h
 
-hx711 -h
-	show hx711 help.
-hx711 -i
-	show hx711 chip and driver information.
-hx711 -p
-	show hx711 pin connections of the current board.
-hx711 -t reg
-	run hx711 register test.
-hx711 -t read <times>
-	run hx711 read times.times means test times.
-hx711 -c read <times>
-	run hx711 read function.times means read times.
+Usage:
+  hx711 (-i | --information)
+  hx711 (-h | --help)
+  hx711 (-p | --port)
+  hx711 (-t reg | --test=reg)
+  hx711 (-t read | --test=read) [--times=<num>]
+  hx711 (-e read | --example=read) [--times=<num>]
+
+Options:
+  -e <read>, --example=<read>             Run the driver example.
+  -h, --help                              Show the help.
+  -i, --information                       Show the chip information.
+  -p, --port                              Display the pin connections of the current board.
+  -t <reg | read>, --test=<reg | read>    Run the driver test.
+      --times=<num>                       Set the running times.([default: 3])
 ```
 

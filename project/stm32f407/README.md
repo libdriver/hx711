@@ -2,47 +2,80 @@
 
 #### 1.1 Chip Info
 
-chip name : STM32F407ZGT6.
+Chip Name: STM32F407ZGT6.
 
-extern oscillator : 8MHz.
+Extern Oscillator: 8MHz.
 
-uart pin: TX/RX PA9/PA10.
+UART Pin: TX/RX PA9/PA10.
 
-gpio pin: DT/SCK PA8/PA7.
+GPIO Pin: DT/SCK PA8/PA0.
 
-### 2. Shell
+### 2. Development and Debugging
 
-#### 2.1 Shell Parameter
+#### 2.1 Integrated Development Environment
 
-baud rate: 115200.
+LidDriver provides both Keil and IAR integrated development environment projects.
 
-data bits : 8.
+MDK is the Keil ARM project and your Keil version must be 5 or higher.Keil ARM project needs STMicroelectronics STM32F4 Series Device Family Pack and you can download from https://www.keil.com/dd2/stmicroelectronics/stm32f407zgtx.
 
-stop bits: 1.
+EW is the IAR ARM project and your IAR version must be 9 or higher.
 
-parity: none.
+#### 2.2 Serial Port Parameter
 
-flow control: none.
+Baud Rate: 115200.
+
+Data Bits : 8.
+
+Stop Bits: 1.
+
+Parity: None.
+
+Flow Control: None.
+
+#### 2.3 Serial Port Assistant
+
+We use '\n' to wrap lines.If your serial port assistant displays exceptions (e.g. the displayed content does not divide lines), please modify the configuration of your serial port assistant or replace one that supports '\n' parsing.
 
 ### 3. HX711
 
 #### 3.1 Command Instruction
 
-​          hx711 is a basic command which can test all hx711 driver function:
+1. Show hx711 help. 
 
-​           -h        show hx711 help. 
+   ```shell
+   hx711 (-i | --information)
+   ```
 
-​           -i         show hx711 chip and driver information.
+2. Show hx711 chip and driver information.
 
-​           -p        show hx711 pin connections of the current board.
+   ```shell
+   hx711 (-h | --help)
+   ```
 
-​           -t (reg | read <times>)
+3. Show hx711 pin connections of the current board.
 
-​           -t reg        run hx711 register test.
+   ```shell
+   hx711 (-p | --port)
+   ```
 
-​           -t read <times>        run hx711 read times. times means test times. 
+4. Run hx711 register test.
 
-​           -c read <times>        run hx711 read function. times means read times.
+   ```shell
+   hx711 (-t reg | --test=reg)
+   ```
+
+5. Run hx711 read times, times means test times. 
+
+   ```shell
+   hx711 (-t read | --test=read) [--times=<num>]
+   ```
+
+6. Run hx711 read function, times means read times.
+
+   ```shell
+   hx711 (-e read | --example=read) [--times=<num>]
+   ```
+
 
 #### 3.2 Command Example
 
@@ -63,12 +96,12 @@ hx711: min temperature is -40.0C.
 ```shell
 hx711 -p
 
-hx711: SCK pin connected to GPIOA PIN7.
+hx711: SCK pin connected to GPIOA PIN0.
 hx711: DT pin connected to GPIOA PIN8.
 ```
 
 ```shell
-hx711 -t read 3
+hx711 -t read --times=3
 
 hx711: chip is Aviaic HX711.
 hx711: manufacturer is Aviaic.
@@ -81,17 +114,17 @@ hx711: max temperature is 85.0C.
 hx711: min temperature is -40.0C.
 hx711: start read test.
 hx711: channel A 128 gain mode test.
-hx711: voltage is 0.135182 mV.
-hx711: voltage is 0.135254 mV.
-hx711: voltage is 0.135167 mV.
+hx711: voltage is 2.231444mV.
+hx711: voltage is 2.246093mV.
+hx711: voltage is 2.280272mV.
 hx711: channel B 32 gain mode test.
-hx711: voltage is 0.030808 mV.
-hx711: voltage is -0.012517 mV.
-hx711: voltage is 0.008421 mV.
+hx711: voltage is 9.492183mV.
+hx711: voltage is 9.257808mV.
+hx711: voltage is 9.374995mV.
 hx711: channel A 64 gain mode test.
-hx711: voltage is 0.137765 mV.
-hx711: voltage is 0.137773 mV.
-hx711: voltage is 0.137732 mV.
+hx711: voltage is 4.648435mV.
+hx711: voltage is 4.619138mV.
+hx711: voltage is 4.667966mV.
 hx711: finish read test.
 ```
 
@@ -119,33 +152,36 @@ hx711: finish register test.
 ```
 
 ```shell
-hx711 -c read 3
+hx711 -e read --times=3
 
 hx711: 1/3.
-hx711: raw voltage is 113396.
-hx711: voltage is 0.000135mV.
+hx711: raw voltage is 1916927.
+hx711: voltage is 0.002285V.
 hx711: 2/3.
-hx711: raw voltage is 113382.
-hx711: voltage is 0.000135mV.
+hx711: raw voltage is 1921023.
+hx711: voltage is 0.002290V.
 hx711: 3/3.
-hx711: raw voltage is 113389.
-hx711: voltage is 0.000135mV.
+hx711: raw voltage is 1904639.
+hx711: voltage is 0.002271V.
 ```
 
 ```shell
 hx711 -h
 
-hx711 -h
-	show hx711 help.
-hx711 -i
-	show hx711 chip and driver information.
-hx711 -p
-	show hx711 pin connections of the current board.
-hx711 -t reg
-	run hx711 register test.
-hx711 -t read <times>
-	run hx711 read times.times means test times.
-hx711 -c read <times>
-	run hx711 read function.times means read times.
+Usage:
+  hx711 (-i | --information)
+  hx711 (-h | --help)
+  hx711 (-p | --port)
+  hx711 (-t reg | --test=reg)
+  hx711 (-t read | --test=read) [--times=<num>]
+  hx711 (-e read | --example=read) [--times=<num>]
+
+Options:
+  -e <read>, --example=<read>             Run the driver example.
+  -h, --help                              Show the help.
+  -i, --information                       Show the chip information.
+  -p, --port                              Display the pin connections of the current board.
+  -t <reg | read>, --test=<reg | read>    Run the driver test.
+      --times=<num>                       Set the running times.([default: 3])
 ```
 
