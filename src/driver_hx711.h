@@ -80,7 +80,7 @@ typedef struct hx711_handle_s
     uint8_t (*clock_deinit)(void);                          /**< point to a clock_deinit function address */
     uint8_t (*clock_write)(uint8_t value);                  /**< point to a clock_write function address */
     void (*delay_us)(uint32_t us);                          /**< point to a delay_us function address */
-    void (*enable_irq)(void);                               /**< point to a enable_irq function address */
+    void (*enable_irq)(void);                               /**< point to an enable_irq function address */
     void (*disable_irq)(void);                              /**< point to a disable_irq function address */
     void (*debug_print)(const char *const fmt, ...);        /**< point to a debug_print function address */
     uint8_t inited;                                         /**< inited flag */
@@ -181,7 +181,7 @@ typedef struct hx711_info_s
 /**
  * @brief     link enable_irq function
  * @param[in] HANDLE points to a hx711 handle structure
- * @param[in] FUC points to a enable_irq function address
+ * @param[in] FUC points to an enable_irq function address
  * @note      none
  */
 #define DRIVER_HX711_LINK_ENABLE_IRQ(HANDLE, FUC)  (HANDLE)->enable_irq = FUC
@@ -215,7 +215,7 @@ typedef struct hx711_info_s
 
 /**
  * @brief      get chip's information
- * @param[out] *info points to a hx711 info structure
+ * @param[out] *info points to an hx711 info structure
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL
@@ -225,7 +225,7 @@ uint8_t hx711_info(hx711_info_t *info);
 
 /**
  * @brief     initialize the chip
- * @param[in] *handle points to a hx711 handle structure
+ * @param[in] *handle points to an hx711 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 bus or clock initialization failed
@@ -237,7 +237,7 @@ uint8_t hx711_init(hx711_handle_t *handle);
 
 /**
  * @brief     close the chip
- * @param[in] *handle points to a hx711 handle structure
+ * @param[in] *handle points to an hx711 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 bus or clock deinit failed
@@ -249,7 +249,7 @@ uint8_t hx711_deinit(hx711_handle_t *handle);
 
 /**
  * @brief     set the chip mode
- * @param[in] *handle points to a hx711 handle structure
+ * @param[in] *handle points to an hx711 handle structure
  * @param[in] mode is the chip mode
  * @return    status code
  *            - 0 success
@@ -262,7 +262,7 @@ uint8_t hx711_set_mode(hx711_handle_t *handle, hx711_mode_t mode);
 
 /**
  * @brief      get the chip mode
- * @param[in]  *handle points to a hx711 handle structure
+ * @param[in]  *handle points to an hx711 handle structure
  * @param[out] *mode points to a chip mode
  * @return     status code
  *             - 0 success
@@ -275,7 +275,7 @@ uint8_t hx711_get_mode(hx711_handle_t *handle, hx711_mode_t *mode);
 
 /**
  * @brief      read the 24 bits raw ad from the chip
- * @param[in]  *handle points to a hx711 handle structure
+ * @param[in]  *handle points to an hx711 handle structure
  * @param[out] *raw points to a raw adc buffer
  * @param[out] *voltage_v points to a converted adc buffer
  * @return     status code
