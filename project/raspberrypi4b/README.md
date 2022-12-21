@@ -74,13 +74,13 @@ find_package(hx711 REQUIRED)
 
 #### 3.1 Command Instruction
 
-1. Show hx711 help. 
+1. Show hx711 chip and driver information.
 
    ```shell
    hx711 (-i | --information)
    ```
 
-2. Show hx711 chip and driver information.
+2. Show hx711 help. 
 
    ```shell
    hx711 (-h | --help)
