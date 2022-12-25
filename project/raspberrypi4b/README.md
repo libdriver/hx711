@@ -98,13 +98,13 @@ find_package(hx711 REQUIRED)
    hx711 (-t reg | --test=reg)
    ```
 
-5. Run hx711 read times, times means test times. 
+5. Run hx711 read times, num means test times. 
 
    ```shell
    hx711 (-t read | --test=read) [--times=<num>]
    ```
 
-6. Run hx711 read function, times means read times.
+6. Run hx711 read function, num means read times.
 
    ```shell
    hx711 (-e read | --example=read) [--times=<num>]
