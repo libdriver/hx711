@@ -21,8 +21,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE. 
  *
- * @file      stm32f407_driver_hx711_interface.c
- * @brief     stm32f407 driver hx711 interface source file
+ * @file      raspberrypi4b_driver_hx711_interface.c
+ * @brief     raspberrypi4b driver hx711 interface source file
  * @version   2.0.0
  * @author    Shifeng Li
  * @date      2021-03-27
