@@ -116,7 +116,7 @@ typedef struct hx711_info_s
 
 /**
  * @brief     initialize hx711_handle_t structure
- * @param[in] HANDLE points to a hx711 handle structure
+ * @param[in] HANDLE points to an hx711 handle structure
  * @param[in] STRUCTURE is hx711_handle_t
  * @note      none
  */
@@ -124,7 +124,7 @@ typedef struct hx711_info_s
 
 /**
  * @brief     link bus_init function
- * @param[in] HANDLE points to a hx711 handle structure
+ * @param[in] HANDLE points to an hx711 handle structure
  * @param[in] FUC points to a bus_init function address
  * @note      none
  */
@@ -132,7 +132,7 @@ typedef struct hx711_info_s
 
 /**
  * @brief     link bus_deinit function
- * @param[in] HANDLE points to a hx711 handle structure
+ * @param[in] HANDLE points to an hx711 handle structure
  * @param[in] FUC points to a bus_deinit function address
  * @note      none
  */
@@ -140,7 +140,7 @@ typedef struct hx711_info_s
 
 /**
  * @brief     link bus_read function
- * @param[in] HANDLE points to a hx711 handle structure
+ * @param[in] HANDLE points to an hx711 handle structure
  * @param[in] FUC points to a bus_read function address
  * @note      none
  */
@@ -148,7 +148,7 @@ typedef struct hx711_info_s
 
 /**
  * @brief     link clock_init function
- * @param[in] HANDLE points to a hx711 handle structure
+ * @param[in] HANDLE points to an hx711 handle structure
  * @param[in] FUC points to a clock_init function address
  * @note      none
  */
@@ -156,7 +156,7 @@ typedef struct hx711_info_s
 
 /**
  * @brief     link clock_deinit function
- * @param[in] HANDLE points to a hx711 handle structure
+ * @param[in] HANDLE points to an hx711 handle structure
  * @param[in] FUC points to a clock_deinit function address
  * @note      none
  */
@@ -164,7 +164,7 @@ typedef struct hx711_info_s
 
 /**
  * @brief     link clock_write function
- * @param[in] HANDLE points to a hx711 handle structure
+ * @param[in] HANDLE points to an hx711 handle structure
  * @param[in] FUC points to a clock_write function address
  * @note      none
  */
@@ -172,7 +172,7 @@ typedef struct hx711_info_s
 
 /**
  * @brief     link delay_us function
- * @param[in] HANDLE points to a hx711 handle structure
+ * @param[in] HANDLE points to an hx711 handle structure
  * @param[in] FUC points to a delay_us function address
  * @note      none
  */
@@ -180,7 +180,7 @@ typedef struct hx711_info_s
 
 /**
  * @brief     link enable_irq function
- * @param[in] HANDLE points to a hx711 handle structure
+ * @param[in] HANDLE points to an hx711 handle structure
  * @param[in] FUC points to an enable_irq function address
  * @note      none
  */
@@ -188,7 +188,7 @@ typedef struct hx711_info_s
 
 /**
  * @brief     link disable_irq function
- * @param[in] HANDLE points to a hx711 handle structure
+ * @param[in] HANDLE points to an hx711 handle structure
  * @param[in] FUC points to a disable_irq function address
  * @note      none
  */
@@ -196,7 +196,7 @@ typedef struct hx711_info_s
 
 /**
  * @brief     link debug_print function
- * @param[in] HANDLE points to a hx711 handle structure
+ * @param[in] HANDLE points to an hx711 handle structure
  * @param[in] FUC points to a debug_print function address
  * @note      none
  */
