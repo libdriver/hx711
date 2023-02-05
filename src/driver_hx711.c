@@ -151,16 +151,16 @@ static uint8_t a_hx711_read_ad(hx711_handle_t *handle, uint8_t len, int32_t *val
         len--;                                                            /* length-- */
     }
     handle->enable_irq();                                                 /* enable interrupt */
-    if ((val & 0x800000) != 0)                                            /* check negtive bit */
+    if ((val & 0x800000) != 0)                                            /* check negative bit */
     {
         union 
         {
             int32_t i_f;
             uint32_t u_f;
         } u;
-        val = 0xFF000000U | val;                                          /* set negtive value */
-        u.u_f = val;                                                      /* set negtive value */
-        *value = (int32_t)u.i_f;                                          /* set negtive value */
+        val = 0xFF000000U | val;                                          /* set negative value */
+        u.u_f = val;                                                      /* set negative value */
+        *value = (int32_t)u.i_f;                                          /* set negative value */
     }
     else
     {
@@ -444,7 +444,7 @@ uint8_t hx711_info(hx711_info_t *info)
     info->max_current_ma = MAX_CURRENT;                             /* set maximum current */
     info->temperature_max = TEMPERATURE_MAX;                        /* set minimal temperature */
     info->temperature_min = TEMPERATURE_MIN;                        /* set maximum temperature */
-    info->driver_version = DRIVER_VERSION;                          /* set driver verison */
+    info->driver_version = DRIVER_VERSION;                          /* set driver version */
     
     return 0;                                                       /* success return 0 */
 }
