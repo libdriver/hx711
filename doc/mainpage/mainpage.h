@@ -1,6 +1,6 @@
 /**
  * @mainpage  LibDriver HX711
- * @brief     libdriver hx711 is a full function driver of hx711 and it can run in both MCU and Linux platform.
+ * @brief     LibDriver HX711 is a full function driver of HX711 and it can run in both MCU and Linux platform.
  * @version   2.0.0
  * @author    Shifeng Li
  *
