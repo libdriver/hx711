@@ -51,9 +51,9 @@
 
 /**
  * @brief      read the raw ad
- * @param[in]  *handle points to an hx711 handle structure
- * @param[in]  len is the read bits
- * @param[out] *value points to a raw ad buffer
+ * @param[in]  *handle pointer to an hx711 handle structure
+ * @param[in]  len read bits
+ * @param[out] *value pointer to a raw ad buffer
  * @return     status code
  *             - 0 success
  *             - 1 read failed
@@ -172,7 +172,7 @@ static uint8_t a_hx711_read_ad(hx711_handle_t *handle, uint8_t len, int32_t *val
 
 /**
  * @brief     initialize the chip
- * @param[in] *handle points to an hx711 handle structure
+ * @param[in] *handle pointer to an hx711 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 bus or clock initialization failed
@@ -266,7 +266,7 @@ uint8_t hx711_init(hx711_handle_t *handle)
 
 /**
  * @brief     close the chip
- * @param[in] *handle points to an hx711 handle structure
+ * @param[in] *handle pointer to an hx711 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 bus or clock deinit failed
@@ -304,8 +304,8 @@ uint8_t hx711_deinit(hx711_handle_t *handle)
 
 /**
  * @brief     set the chip mode
- * @param[in] *handle points to an hx711 handle structure
- * @param[in] mode is the chip mode
+ * @param[in] *handle pointer to an hx711 handle structure
+ * @param[in] mode chip mode
  * @return    status code
  *            - 0 success
  *            - 1 set mode failed
@@ -339,8 +339,8 @@ uint8_t hx711_set_mode(hx711_handle_t *handle, hx711_mode_t mode)
 
 /**
  * @brief      get the chip mode
- * @param[in]  *handle points to an hx711 handle structure
- * @param[out] *mode points to a chip mode
+ * @param[in]  *handle pointer to an hx711 handle structure
+ * @param[out] *mode pointer to a chip mode
  * @return     status code
  *             - 0 success
  *             - 1 get mode failed
@@ -366,9 +366,9 @@ uint8_t hx711_get_mode(hx711_handle_t *handle, hx711_mode_t *mode)
 
 /**
  * @brief      read the 24 bits raw ad from the chip
- * @param[in]  *handle points to an hx711 handle structure
- * @param[out] *raw points to a raw adc buffer
- * @param[out] *voltage_v points to a converted adc buffer
+ * @param[in]  *handle pointer to an hx711 handle structure
+ * @param[out] *raw pointer to a raw adc buffer
+ * @param[out] *voltage_v pointer to a converted adc buffer
  * @return     status code
  *             - 0 success
  *             - 1 read failed
@@ -422,7 +422,7 @@ uint8_t hx711_read(hx711_handle_t *handle, int32_t *raw, double *voltage_v)
 
 /**
  * @brief      get chip's information
- * @param[out] *info points to an hx711 info structure
+ * @param[out] *info pointer to an hx711 info structure
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL

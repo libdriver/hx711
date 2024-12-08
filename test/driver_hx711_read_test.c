@@ -41,7 +41,7 @@ static hx711_handle_t gs_handle;        /**< hx711 handle */
 
 /**
  * @brief     read test
- * @param[in] times is the test times
+ * @param[in] times test times
  * @return    status code
  *            - 0 success
  *            - 1 test failed
