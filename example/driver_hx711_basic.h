@@ -76,8 +76,8 @@ uint8_t hx711_basic_deinit(void);
 
 /**
  * @brief      basic example read
- * @param[out] *raw_voltage points to a raw adc buffer
- * @param[out] *voltage_v points to a converted adc buffer
+ * @param[out] *raw_voltage pointer to a raw adc buffer
+ * @param[out] *voltage_v pointer to a converted adc buffer
  * @return     status code
  *             - 0 success
  *             - 1 read failed

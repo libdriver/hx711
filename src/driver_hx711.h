@@ -116,88 +116,88 @@ typedef struct hx711_info_s
 
 /**
  * @brief     initialize hx711_handle_t structure
- * @param[in] HANDLE points to an hx711 handle structure
- * @param[in] STRUCTURE is hx711_handle_t
+ * @param[in] HANDLE pointer to an hx711 handle structure
+ * @param[in] STRUCTURE hx711_handle_t
  * @note      none
  */
 #define DRIVER_HX711_LINK_INIT(HANDLE, STRUCTURE)   memset(HANDLE, 0, sizeof(STRUCTURE))
 
 /**
  * @brief     link bus_init function
- * @param[in] HANDLE points to an hx711 handle structure
- * @param[in] FUC points to a bus_init function address
+ * @param[in] HANDLE pointer to an hx711 handle structure
+ * @param[in] FUC pointer to a bus_init function address
  * @note      none
  */
 #define DRIVER_HX711_LINK_BUS_INIT(HANDLE, FUC)    (HANDLE)->bus_init = FUC
 
 /**
  * @brief     link bus_deinit function
- * @param[in] HANDLE points to an hx711 handle structure
- * @param[in] FUC points to a bus_deinit function address
+ * @param[in] HANDLE pointer to an hx711 handle structure
+ * @param[in] FUC pointer to a bus_deinit function address
  * @note      none
  */
 #define DRIVER_HX711_LINK_BUS_DEINIT(HANDLE, FUC)  (HANDLE)->bus_deinit = FUC
 
 /**
  * @brief     link bus_read function
- * @param[in] HANDLE points to an hx711 handle structure
- * @param[in] FUC points to a bus_read function address
+ * @param[in] HANDLE pointer to an hx711 handle structure
+ * @param[in] FUC pointer to a bus_read function address
  * @note      none
  */
 #define DRIVER_HX711_LINK_BUS_READ(HANDLE, FUC)    (HANDLE)->bus_read = FUC
 
 /**
  * @brief     link clock_init function
- * @param[in] HANDLE points to an hx711 handle structure
- * @param[in] FUC points to a clock_init function address
+ * @param[in] HANDLE pointer to an hx711 handle structure
+ * @param[in] FUC pointer to a clock_init function address
  * @note      none
  */
 #define DRIVER_HX711_LINK_CLOCK_INIT(HANDLE, FUC)  (HANDLE)->clock_init = FUC
 
 /**
  * @brief     link clock_deinit function
- * @param[in] HANDLE points to an hx711 handle structure
- * @param[in] FUC points to a clock_deinit function address
+ * @param[in] HANDLE pointer to an hx711 handle structure
+ * @param[in] FUC pointer to a clock_deinit function address
  * @note      none
  */
 #define DRIVER_HX711_LINK_CLOCK_DEINIT(HANDLE, FUC)(HANDLE)->clock_deinit = FUC
 
 /**
  * @brief     link clock_write function
- * @param[in] HANDLE points to an hx711 handle structure
- * @param[in] FUC points to a clock_write function address
+ * @param[in] HANDLE pointer to an hx711 handle structure
+ * @param[in] FUC pointer to a clock_write function address
  * @note      none
  */
 #define DRIVER_HX711_LINK_CLOCK_WRITE(HANDLE, FUC) (HANDLE)->clock_write = FUC
 
 /**
  * @brief     link delay_us function
- * @param[in] HANDLE points to an hx711 handle structure
- * @param[in] FUC points to a delay_us function address
+ * @param[in] HANDLE pointer to an hx711 handle structure
+ * @param[in] FUC pointer to a delay_us function address
  * @note      none
  */
 #define DRIVER_HX711_LINK_DELAY_US(HANDLE, FUC)    (HANDLE)->delay_us = FUC
 
 /**
  * @brief     link enable_irq function
- * @param[in] HANDLE points to an hx711 handle structure
- * @param[in] FUC points to an enable_irq function address
+ * @param[in] HANDLE pointer to an hx711 handle structure
+ * @param[in] FUC pointer to an enable_irq function address
  * @note      none
  */
 #define DRIVER_HX711_LINK_ENABLE_IRQ(HANDLE, FUC)  (HANDLE)->enable_irq = FUC
 
 /**
  * @brief     link disable_irq function
- * @param[in] HANDLE points to an hx711 handle structure
- * @param[in] FUC points to a disable_irq function address
+ * @param[in] HANDLE pointer to an hx711 handle structure
+ * @param[in] FUC pointer to a disable_irq function address
  * @note      none
  */
 #define DRIVER_HX711_LINK_DISABLE_IRQ(HANDLE, FUC) (HANDLE)->disable_irq = FUC
 
 /**
  * @brief     link debug_print function
- * @param[in] HANDLE points to an hx711 handle structure
- * @param[in] FUC points to a debug_print function address
+ * @param[in] HANDLE pointer to an hx711 handle structure
+ * @param[in] FUC pointer to a debug_print function address
  * @note      none
  */
 #define DRIVER_HX711_LINK_DEBUG_PRINT(HANDLE, FUC) (HANDLE)->debug_print = FUC
@@ -215,7 +215,7 @@ typedef struct hx711_info_s
 
 /**
  * @brief      get chip's information
- * @param[out] *info points to an hx711 info structure
+ * @param[out] *info pointer to an hx711 info structure
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL
@@ -225,7 +225,7 @@ uint8_t hx711_info(hx711_info_t *info);
 
 /**
  * @brief     initialize the chip
- * @param[in] *handle points to an hx711 handle structure
+ * @param[in] *handle pointer to an hx711 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 bus or clock initialization failed
@@ -237,7 +237,7 @@ uint8_t hx711_init(hx711_handle_t *handle);
 
 /**
  * @brief     close the chip
- * @param[in] *handle points to an hx711 handle structure
+ * @param[in] *handle pointer to an hx711 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 bus or clock deinit failed
@@ -249,8 +249,8 @@ uint8_t hx711_deinit(hx711_handle_t *handle);
 
 /**
  * @brief     set the chip mode
- * @param[in] *handle points to an hx711 handle structure
- * @param[in] mode is the chip mode
+ * @param[in] *handle pointer to an hx711 handle structure
+ * @param[in] mode chip mode
  * @return    status code
  *            - 0 success
  *            - 1 set mode failed
@@ -262,8 +262,8 @@ uint8_t hx711_set_mode(hx711_handle_t *handle, hx711_mode_t mode);
 
 /**
  * @brief      get the chip mode
- * @param[in]  *handle points to an hx711 handle structure
- * @param[out] *mode points to a chip mode
+ * @param[in]  *handle pointer to an hx711 handle structure
+ * @param[out] *mode pointer to a chip mode
  * @return     status code
  *             - 0 success
  *             - 1 get mode failed
@@ -275,9 +275,9 @@ uint8_t hx711_get_mode(hx711_handle_t *handle, hx711_mode_t *mode);
 
 /**
  * @brief      read the 24 bits raw ad from the chip
- * @param[in]  *handle points to an hx711 handle structure
- * @param[out] *raw points to a raw adc buffer
- * @param[out] *voltage_v points to a converted adc buffer
+ * @param[in]  *handle pointer to an hx711 handle structure
+ * @param[out] *raw pointer to a raw adc buffer
+ * @param[out] *voltage_v pointer to a converted adc buffer
  * @return     status code
  *             - 0 success
  *             - 1 read failed
