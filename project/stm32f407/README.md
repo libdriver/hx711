@@ -76,7 +76,6 @@ We use '\n' to wrap lines.If your serial port assistant displays exceptions (e.g
    hx711 (-e read | --example=read) [--times=<num>]
    ```
 
-
 #### 3.2 Command Example
 
 ```shell
