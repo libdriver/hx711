@@ -396,19 +396,19 @@ uint8_t hx711_read(hx711_handle_t *handle, int32_t *raw, double *voltage_v)
     }
     if (handle->mode == (uint8_t)HX711_MODE_CHANNEL_A_GAIN_128)              /* if gain 128 */
     {
-        *voltage_v = (double)(*raw) * (20.0 / (pow(2.0, 24.0))) / 1000.0;    /* calculate gain 128 */
+        *voltage_v = (double)(*raw) * (20.0 / (pow(2.0, 23.0))) / 1000.0;    /* calculate gain 128 */
         
         return 0;                                                            /* success return 0 */
     }
     else if (handle->mode == (uint8_t)HX711_MODE_CHANNEL_B_GAIN_32)          /* if gain 32 */
     {
-        *voltage_v = (double)(*raw) * (80.0 / (pow(2.0, 24.0))) / 1000.0;    /* calculate gain 32 */
+        *voltage_v = (double)(*raw) * (80.0 / (pow(2.0, 23.0))) / 1000.0;    /* calculate gain 32 */
         
         return 0;                                                            /* success return 0 */
     }
     else if (handle->mode == (uint8_t)HX711_MODE_CHANNEL_A_GAIN_64)          /* if gain 64 */
     {
-        *voltage_v = (double)(*raw) * (40.0 / (pow(2.0, 24.0))) / 1000.0;    /* calculate gain 64 */
+        *voltage_v = (double)(*raw) * (40.0 / (pow(2.0, 23.0))) / 1000.0;    /* calculate gain 64 */
         
         return 0;                                                            /* success return 0 */
     }
